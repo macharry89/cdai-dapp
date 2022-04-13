@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 16px;
+  color: #fff;
+  background-color: #02091b;
 }
 
 a {
@@ -13,4 +18,13 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  background: transparent;
 }

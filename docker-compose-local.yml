@@ -1,0 +1,15 @@
+version: '3'
+services:
+  #######################################
+  # Next.js application for cDAI-Dapp
+  #######################################
+  dapp:
+    build:
+      context: .
+      dockerfile: Dockerfile.development
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    volumes:
+       - ./:/app
+       - /app/node_modules
