@@ -17,6 +17,7 @@ export const useMint = () => {
     useContext(UserContext);
   const { account } = useWeb3Provider();
   const delegateInfo = useDelegateInfo();
+  const { updateSupplyBalance } = useContext(UserContext);
 
   const mint = useCallback(
     (amount: number, asset: Asset) => {
@@ -29,15 +30,7 @@ export const useMint = () => {
             if (isMounted.current) {
               triggerToast('SUCCESS');
 
-              // const fetchData = async () => {
-              //   const response = await fetch("/api/dai-supply");
-            
-              //   if (!response.ok) {
-              //     throw new Error(`Error: ${response.status}`);
-              //   }
-              //   const data = await response.json();
-              //   console.log(data);
-              // };
+              updateSupplyBalance(account);
 
               setIsTransactionModalOpened(true);
               setCurrencyAmount('');

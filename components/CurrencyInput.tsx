@@ -1,6 +1,6 @@
 import NumberFormat from 'react-number-format';
 import Image from 'next/image';
-import DaiImg from '/assets/img/dai.svg';
+// import DaiImg from '/assets/img/dai.svg';
 
 const CurrencyInput = ({
   value,
@@ -31,8 +31,10 @@ const CurrencyInput = ({
       >
         <div className="coin-image">
           <Image
-            src={DaiImg}
+            src={'/assets/img/dai.svg'}
             alt="DAI"
+            width="100%"
+            height="100%"
           />
           </div>
         <span>DAI</span>

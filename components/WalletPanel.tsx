@@ -9,20 +9,17 @@ import {
 import CurrencyInput from './CurrencyInput';
 import Loader from './Loader';
 import GlowBorderedCard from './GlowBorderedCard';
-import { getNormalizedPriceString } from '../utils';
+import { getNormalizedPriceString, triggerToast } from '../utils';
 import { useMint } from '../hooks/useMint';
 import ActionButton from './ActionButton';
-import BorderTopImg from '/assets/img/border-top.png';
-import BorderBottomImg from '/assets/img/border-bottom.png';
-import BorderVerticalImg from '/assets/img/border-vertical.png';
-import RefreshImg from '/assets/img/refresh.svg';
+
 import Image from 'next/image';
 
 const WalletPanel = () => {
-  const { currencyAmount, setIsWalletConnectOpened, setCurrencyAmount } =
+  const { currencyAmount, setIsWalletConnectOpened, setCurrencyAmount, supplyBalance, updateSupplyBalance } =
     useContext(UserContext);
 
-  const { active } = useWeb3Provider();
+  const { account, active } = useWeb3Provider();
   const [ daiBalance , refreshDaiBalance] = useERC20Balance('DAI');
   const [ cDaiBalance ] = useERC20Balance('cDAI');
   const { isApproved, isApproving, approve } = useERC20Approve('DAI');
@@ -38,6 +35,8 @@ const WalletPanel = () => {
         setExchangeRate(data.exchangeRate);
       }
     })();
+
+    updateSupplyBalance(account);
   });
 
   const ctaBtn = useMemo(() => {
@@ -100,28 +99,30 @@ const WalletPanel = () => {
       <div className="wallet-panel-wrapper">
         <div className="wallet-horizontal-border wallet-top-border">
           <Image
-            src={BorderTopImg}
+            src={'/assets/img/border-top.png'}
             alt=""
+            layout="fill"
           />
         </div>
         <div className="wallet-horizontal-border wallet-bottom-border">
           <Image
-            src={BorderBottomImg}
+            src={'/assets/img/border-bottom.png'}
             alt=""
+            layout="fill"
           />
         </div>
         <div className="wallet-vertical-border wallet-left-border">
           <Image
-            src={BorderVerticalImg}
+            src={'/assets/img/border-vertical.png'}
             alt=""
-            layout="responsive"
+            layout="fill"
           />
         </div>
         <div className="wallet-vertical-border wallet-right-border">
           <Image
-            src={BorderVerticalImg}
+            src={'/assets/img/border-vertical.png'}
             alt=""
-            layout="responsive"
+            layout="fill"
           />
         </div>
 
@@ -149,8 +150,10 @@ const WalletPanel = () => {
               </button>
               <button onClick={refreshDaiBalance}>
                 <Image 
-                  src={RefreshImg} 
+                  src={'/assets/img/refresh.svg'} 
                   alt="" 
+                  width={25}
+                  height={25}
                 />
               </button>
             </div>
@@ -173,6 +176,14 @@ const WalletPanel = () => {
             />
             <GlowBorderedCard
               title="Your Supply Balance"
+              content={`${getNormalizedPriceString(Number.parseFloat(supplyBalance) ?? 0)} cDAI`}
+            />
+            <GlowBorderedCard
+              title="Your DAI Balance"
+              content={`${getNormalizedPriceString(daiBalance ?? 0)} DAI`}
+            />
+            <GlowBorderedCard
+              title="Your cDAI Balance"
               content={`${getNormalizedPriceString(cDaiBalance ?? 0)} cDAI`}
             />
           </div>

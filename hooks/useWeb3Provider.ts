@@ -47,7 +47,7 @@ export const useWeb3Provider = () => {
 
       activate(connector, undefined, true)
         .then(() => {
-          triggerToast('WALLET_CONNET');
+          triggerToast('WALLET_CONNECT');
         })
         .catch((error) => {
           console.log(error);
@@ -79,7 +79,7 @@ export const useWeb3Provider = () => {
 
   useEffect(() => {
     if (account) {
-      updateToast('WALLET_CONNET', getWalletAddressAbbr(account));
+      updateToast('WALLET_CONNECT', getWalletAddressAbbr(account));
     }
   }, [account]);
 

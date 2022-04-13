@@ -2,9 +2,9 @@ import { useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
 import { useAddTokenToMetamask } from '../hooks/useAddTokenToMetamask';
 import Image from 'next/image'
-import ApproveSuccessImg from '/assets/img/approve-success.svg';
-import DaiImg from '/assets/img/dai.svg';
-import cDaiImg from '/assets/img/cdai.svg';
+// import ApproveSuccessImg from '/assets/img/approve-success.svg';
+// import DaiImg from '/assets/img/dai.svg';
+// import cDaiImg from '/assets/img/cdai.svg';
 import Modal from './Modal';
 
 const AfterTransactionModal = () => {
@@ -34,7 +34,7 @@ const AfterTransactionModal = () => {
           onClick={() => setIsTransactionModalOpened(false)}
         />
         <div className="header-icon">
-          <Image src={ApproveSuccessImg} alt="success" width="126px"/>
+          <Image src={'/assets/img/approve-success.svg'} alt="success" width="126" height="126"/>
         </div>
         <h3>Congratulations!</h3>
         <p className="narrow-paragraph">
@@ -42,11 +42,11 @@ const AfterTransactionModal = () => {
         </p>
         <div className="button-wrapper">
           <button className="cta metamask-cta" onClick={addDaiTokenToMetamask}>
-            <Image src={DaiImg} alt="Metamask" width="48" height="48"/>
+            <Image src={'/assets/img/dai.svg'} alt="Metamask" width="48" height="48"/>
             <span>Add cDAI to MetaMask</span>
           </button>
           <button className="cta metamask-cta" onClick={addCDaiTokenToMetamask}>
-            <Image src={cDaiImg} alt="Metamask" width="48" height="48"/>
+            <Image src={'/assets/img/cdai.svg'} alt="Metamask" width="48" height="48"/>
             <span>Add cDAI to MetaMask</span>
           </button>
         </div>

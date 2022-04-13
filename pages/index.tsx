@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useContext } from 'react'
+import { ToastContainer } from 'react-toastify'
 import AfterTransactionModal from '../components/AfterTransactionModal'
 import ConnectModal from '../components/ConnectModal'
 import Header from '../components/Header'
@@ -8,6 +9,7 @@ import WalletPanel from '../components/WalletPanel'
 import { UserContext } from '../contexts/UserContext'
 import { useWeb3Listener } from '../hooks'
 import { useEagerConnect } from '../hooks/useEagerConnect'
+import 'react-toastify/dist/ReactToastify.css';
 
 const Home: NextPage = () => {
   useEagerConnect();
@@ -37,6 +39,7 @@ const Home: NextPage = () => {
           <AfterTransactionModal />
         </div>
       </main>
+      <ToastContainer />
     </div>
   )
 }

@@ -4,8 +4,8 @@ import { UserContext } from '../contexts/UserContext';
 import { useWeb3Provider } from '../hooks';
 import { getWalletAddressAbbr } from '../utils';
 import Image from 'next/image'
-import cDaiImg from '/assets/img/cdai.svg';
-import ChevronDownImg from '/assets/img/chevron-down.svg';
+// import cDaiImg from '/assets/img/cdai.svg';
+// import ChevronDownImg from '/assets/img/chevron-down.svg';
 
 const Header = () => {
   const { isWalletConnectOpened, setIsWalletConnectOpened } =
@@ -16,7 +16,7 @@ const Header = () => {
   return (
     <div className="header">
       <div className="header-bg">
-        <Image src={cDaiImg} alt="" />
+        <Image src={'/assets/img/cdai.svg'} alt="" width="100%" height="100%"/>
       </div>
       <div className="header-container">
         <span className="logo">
@@ -37,7 +37,7 @@ const Header = () => {
           {active ? (
             <>
               <span>{getWalletAddressAbbr(account)}</span>
-              <Image src={ChevronDownImg} alt="" />
+              <Image src={'/assets/img/chevron-down.svg'} alt="" width="14" height="14"/>
             </>
           ) : (
             'Connect Wallet'
