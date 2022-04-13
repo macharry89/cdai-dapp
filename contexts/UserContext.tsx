@@ -33,7 +33,7 @@ export const UserContextProvider: FC = ({ children }) => {
   const [currencyAmount, setCurrencyAmount] = useState<string>('');
   const [supplyBalance, setSupplyBalance] = useState<string>('');
 
-  const updateSupplyBalance = async (account: string) => {
+  const updateSupplyBalance = async (account: string | null | undefined) => {
     const res = await fetch(`/api/dai-supply/${account}`);
     if (res.ok) {
       const data = await res.json();
